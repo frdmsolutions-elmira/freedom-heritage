@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Freedom Heritage — цифровое наследие семьи</title>
+<meta name="description" content="Freedom Heritage — оцифровка, систематизация и создание цифрового наследия семьи. Продукт компании Freedom Solutions.">
+<meta property="og:title" content="Freedom Heritage — цифровое наследие семьи">
+<meta property="og:description" content="Превращаем разрозненные фото, видео и документы семьи в книгу и цифровой архив, который проживёт десятилетия.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://freedoms.kz/">
+<link rel="canonical" href="https://freedoms.kz/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@300;400;500;600;700&family=Cormorant+Garamond:ital@1&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0c0b09;
+    --bg-alt:#141210;
+    --bg-card:#18150f;
+    --cream:#f2ece0;
+    --cream-dim:#cfc6b3;
+    --muted:#8f8672;
+    --gold:#c9a35e;
+    --gold-bright:#e0bd7c;
+    --gold-deep:#7a5f30;
+    --line:rgba(201,163,94,0.22);
+    --serif:'Playfair Display', 'Times New Roman', serif;
+    --script:'Cormorant Garamond', serif;
+    --sans:'Manrope', -apple-system, sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--cream);
+    font-family:var(--sans);
+    line-height:1.6;
+    font-weight:300;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
+  section{position:relative;}
+
+  /* Utility labels */
+  .eyebrow{
+    font-family:var(--sans);
+    font-size:12px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:600;
+    margin-bottom:14px;
+    display:inline-block;
+  }
+  .eyebrow.muted{color:var(--muted);}
+  h1,h2,h3{font-family:var(--serif);font-weight:600;letter-spacing:-.01em;color:var(--cream);}
+  .lede{font-family:var(--script);font-style:italic;font-size:22px;color:var(--cream-dim);line-height:1.5;}
+  .divider{
+    width:100%;height:1px;
+    background:linear-gradient(90deg,transparent,var(--line) 20%,var(--line) 80%,transparent);
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:16px 30px;
+    border:1px solid var(--gold);
+    border-radius:2px;
+    font-size:14px;letter-spacing:.04em;
+    font-weight:600;
+    transition:all .25s ease;
+    background:transparent;color:var(--gold-bright);
+  }
+  .btn:hover{background:var(--gold);color:#0c0b09;}
+  .btn.filled{background:var(--gold);color:#0c0b09;}
+  .btn.filled:hover{background:var(--gold-bright);border-color:var(--gold-bright);}
+
+  /* NAV */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(12,11,9,0.88);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .navbar{display:flex;align-items:center;justify-content:space-between;padding:18px 24px;max-width:1120px;margin:0 auto;}
+  .brand{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-size:17px;}
+  .brand img{height:34px;width:auto;filter:grayscale(1) brightness(1.4);}
+  .brand small{display:block;font-family:var(--sans);font-size:10px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;font-weight:500;}
+  nav ul{display:flex;gap:32px;list-style:none;}
+  nav a{font-size:13px;letter-spacing:.03em;color:var(--cream-dim);transition:color .2s;}
+  nav a:hover{color:var(--gold-bright);}
+  .nav-toggle{display:none;}
+  @media(max-width:820px){
+    nav ul{display:none;}
+  }
+
+  /* HERO */
+  .hero{padding:90px 0 60px;position:relative;overflow:hidden;}
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse 700px 400px at 80% -10%, rgba(201,163,94,0.08), transparent 60%);
+    pointer-events:none;
+  }
+  .stamp{
+    display:inline-flex;flex-direction:column;align-items:center;justify-content:center;
+    width:96px;height:96px;border:1px solid var(--gold);border-radius:50%;
+    text-align:center;transform:rotate(-8deg);
+    margin-bottom:28px;
+  }
+  .stamp span{font-size:9px;letter-spacing:.12em;color:var(--gold);font-weight:700;line-height:1.5;text-transform:uppercase;}
+  .stamp .big{font-family:var(--serif);font-size:11px;color:var(--gold-bright);}
+
+  .hero h1{font-size:clamp(32px,5vw,54px);line-height:1.16;max-width:780px;margin-bottom:26px;}
+  .hero h1 em{font-style:italic;color:var(--gold-bright);}
+  .hero p.sub{font-size:17px;color:var(--cream-dim);max-width:600px;margin-bottom:36px;font-weight:300;}
+  .hero-ctas{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:56px;}
+
+  .hero-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;padding-top:36px;border-top:1px solid var(--line);}
+  .hero-meta .eyebrow{margin-bottom:8px;}
+  .hero-meta p{font-size:14px;color:var(--cream-dim);}
+
+  .hero-img{margin-top:64px;position:relative;}
+  .hero-img img{width:100%;border-radius:2px;filter:saturate(0.92) contrast(1.03);}
+  .hero-img figcaption{
+    margin-top:16px;font-family:var(--script);font-style:italic;font-size:18px;color:var(--cream-dim);
+    max-width:520px;
+  }
+
+  /* BEFORE / AFTER */
+  .contrast{padding:70px 0;background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .contrast-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;}
+  .contrast-col{padding:44px 40px;}
+  .contrast-col:first-child{border-right:1px solid var(--line);}
+  .contrast-col h3{font-size:20px;margin-bottom:16px;}
+  .contrast-col.bad h3{color:var(--muted);}
+  .contrast-col.good h3{color:var(--gold-bright);}
+  .contrast-col p{color:var(--cream-dim);font-size:15px;}
+  @media(max-width:760px){
+    .contrast-grid{grid-template-columns:1fr;}
+    .contrast-col:first-child{border-right:none;border-bottom:1px solid var(--line);}
+  }
+  .contrast-closer{text-align:center;padding:56px 24px 0;font-family:var(--script);font-style:italic;font-size:24px;color:var(--cream-dim);}
+
+  /* WHY NOW */
+  .why{padding:96px 0;text-align:center;}
+  .why h2{font-size:clamp(26px,3.4vw,38px);max-width:680px;margin:0 auto 24px;}
+  .why p{max-width:560px;margin:0 auto;color:var(--cream-dim);font-size:16px;}
+
+  /* GUARANTEE */
+  .guarantee{padding:96px 0;background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .section-head{text-align:center;max-width:640px;margin:0 auto 64px;}
+  .section-head h2{font-size:clamp(28px,3.6vw,40px);}
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);}
+  .grid-3 > div{background:var(--bg-alt);padding:40px 34px;}
+  .num{font-family:var(--serif);font-size:13px;color:var(--gold);letter-spacing:.08em;margin-bottom:18px;}
+  .grid-3 h3{font-size:21px;margin-bottom:12px;}
+  .grid-3 p{color:var(--cream-dim);font-size:14.5px;}
+  @media(max-width:820px){.grid-3{grid-template-columns:1fr;}}
+
+  /* SERVICES */
+  .services{padding:96px 0;}
+  .service-row{display:grid;grid-template-columns:70px 1fr;gap:20px;padding:36px 0;border-top:1px solid var(--line);}
+  .service-row:last-of-type{border-bottom:1px solid var(--line);}
+  .service-row .num{font-size:28px;color:var(--gold-deep);}
+  .service-row h3{font-size:24px;margin-bottom:10px;}
+  .service-row p{color:var(--cream-dim);font-size:15px;max-width:520px;}
+
+  .quote-block{padding:80px 0;text-align:center;}
+  .quote-block img{max-width:460px;margin:0 auto 32px;border-radius:2px;}
+  .quote-block p{font-family:var(--script);font-style:italic;font-size:24px;color:var(--cream-dim);max-width:600px;margin:0 auto;}
+
+  /* PROCESS */
+  .process{padding:96px 0;background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px;}
+  .process-grid .num{font-size:30px;color:var(--gold-deep);margin-bottom:14px;}
+  .process-grid h4{font-family:var(--serif);font-size:18px;margin-bottom:10px;}
+  .process-grid p{font-size:13.5px;color:var(--cream-dim);}
+  @media(max-width:820px){.process-grid{grid-template-columns:1fr 1fr;row-gap:44px;}}
+
+  /* CASES */
+  .cases{padding:100px 0;}
+  .case-card{
+    display:grid;grid-template-columns:1fr 1fr;gap:56px;
+    padding:64px 0;border-top:1px solid var(--line);align-items:center;
+  }
+  .case-card:last-of-type{border-bottom:1px solid var(--line);}
+  .case-card.reverse{grid-template-columns:1fr 1fr;}
+  .case-card.reverse .case-media{order:2;}
+  .case-media{position:relative;}
+  .case-media img{border-radius:2px;width:100%;box-shadow:0 30px 60px -20px rgba(0,0,0,.6);}
+  .case-media .badge{
+    position:absolute;bottom:-18px;left:-18px;
+    background:var(--bg);border:1px solid var(--gold);
+    border-radius:50%;width:110px;height:110px;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    text-align:center;transform:rotate(-6deg);
+    box-shadow:0 10px 30px rgba(0,0,0,.5);
+  }
+  .case-media .badge span{font-size:9.5px;letter-spacing:.08em;color:var(--gold-bright);font-weight:700;line-height:1.4;text-transform:uppercase;padding:0 8px;}
+  .case-body .eyebrow{margin-bottom:10px;}
+  .case-body h3{font-size:clamp(22px,2.6vw,30px);margin-bottom:16px;line-height:1.25;}
+  .case-body p{color:var(--cream-dim);font-size:15px;margin-bottom:20px;}
+  .case-facts{display:flex;gap:28px;flex-wrap:wrap;margin-top:26px;padding-top:22px;border-top:1px solid var(--line);}
+  .case-facts div{font-size:12.5px;color:var(--muted);letter-spacing:.03em;}
+  .case-facts strong{display:block;font-family:var(--serif);font-size:18px;color:var(--gold-bright);font-weight:600;margin-bottom:2px;}
+  @media(max-width:820px){
+    .case-card, .case-card.reverse{grid-template-columns:1fr;gap:32px;}
+    .case-card.reverse .case-media{order:0;}
+    .case-media .badge{width:88px;height:88px;bottom:-14px;left:-14px;}
+  }
+
+  /* FOUNDER */
+  .founder{padding:100px 0;background:var(--bg-alt);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .founder-grid{display:grid;grid-template-columns:340px 1fr;gap:64px;align-items:start;}
+  .founder-grid img{border-radius:2px;filter:saturate(.9);}
+  .credentials{display:flex;gap:0;margin:28px 0 30px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .credentials div{flex:1;padding:18px 0;text-align:center;border-right:1px solid var(--line);}
+  .credentials div:last-child{border-right:none;}
+  .credentials strong{display:block;font-family:var(--serif);font-size:19px;color:var(--gold-bright);}
+  .credentials span{font-size:10.5px;color:var(--muted);letter-spacing:.03em;text-transform:uppercase;display:block;margin-top:4px;}
+  .founder h2{font-size:clamp(24px,3vw,32px);margin-bottom:20px;}
+  .founder p{color:var(--cream-dim);font-size:15.5px;margin-bottom:16px;max-width:600px;}
+  @media(max-width:820px){.founder-grid{grid-template-columns:1fr;}.credentials{flex-wrap:wrap;}.credentials div{flex:1 1 50%;border-bottom:1px solid var(--line);}}
+
+  /* INVESTMENT / TRUST */
+  .invest{padding:100px 0;}
+  .invest-grid{display:grid;grid-template-columns:1fr 1fr;gap:70px;}
+  .invest h2{font-size:clamp(26px,3.2vw,36px);margin-bottom:22px;line-height:1.25;}
+  .invest p{color:var(--cream-dim);font-size:15.5px;margin-bottom:18px;}
+  .invest-list{list-style:none;margin-top:8px;}
+  .invest-list li{display:flex;gap:14px;padding:16px 0;border-top:1px solid var(--line);font-size:14.5px;color:var(--cream-dim);}
+  .invest-list li:last-child{border-bottom:1px solid var(--line);}
+  .invest-list li .mark{color:var(--gold);font-family:var(--serif);flex-shrink:0;}
+  .invest-panel{background:var(--bg-card);border:1px solid var(--line);padding:44px;border-radius:2px;}
+  .invest-panel .eyebrow{margin-bottom:16px;}
+  .invest-panel h3{font-size:22px;margin-bottom:18px;}
+  .invest-panel p{color:var(--cream-dim);font-size:14.5px;margin-bottom:24px;}
+  @media(max-width:820px){.invest-grid{grid-template-columns:1fr;}}
+
+  /* CTA / APPLY */
+  .apply{padding:110px 0;text-align:center;background:var(--bg-alt);border-top:1px solid var(--line);}
+  .apply .eyebrow{margin-bottom:20px;}
+  .apply h2{font-size:clamp(28px,4vw,44px);max-width:720px;margin:0 auto 20px;line-height:1.22;}
+  .apply p.sub{color:var(--cream-dim);font-size:16px;max-width:520px;margin:0 auto 46px;}
+  .apply-steps{display:flex;justify-content:center;gap:44px;margin-bottom:52px;flex-wrap:wrap;}
+  .apply-steps div{max-width:180px;text-align:left;}
+  .apply-steps .num{font-family:var(--serif);color:var(--gold);font-size:13px;margin-bottom:8px;display:block;}
+  .apply-steps p{font-size:13.5px;color:var(--cream-dim);}
+  .apply-ctas{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+
+  footer{padding:44px 0;text-align:center;border-top:1px solid var(--line);}
+  footer p{font-size:12.5px;color:var(--muted);letter-spacing:.02em;}
+  footer a{color:var(--gold);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <a href="#" class="brand">
+      <img src="https://frdmsolutions-elmira.github.io/freedom-heritage/freedom-solutions-logo.jpg" alt="Freedom Solutions">
+      <span>Freedom Heritage<small>продукт Freedom Solutions</small></span>
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#guarantee">Гарантия</a></li>
+        <li><a href="#services">Услуги</a></li>
+        <li><a href="#process">Процесс</a></li>
+        <li><a href="#cases">Кейсы</a></li>
+        <li><a href="#apply">Заявка</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="stamp"><span class="big">принято</span><span>в архив</span></div>
+    <h1>Память не должна <em>лежать</em> в коробке.<br>Она должна жить в наследии.</h1>
+    <p class="sub">Собираем разрозненные фото, видео и документы семьи — и превращаем их в книгу с QR-доступом к воспоминаниям и цифровой архив, который можно открыть и пересмотреть через двадцать лет.</p>
+    <div class="hero-ctas">
+      <a href="#apply" class="btn filled">Обсудить свой архив</a>
+      <a href="#cases" class="btn">Посмотреть кейсы</a>
+    </div>
+    <div class="hero-meta">
+      <div><span class="eyebrow muted">Что это</span><p>Оцифровка → систематизация по архивным стандартам → книга с QR на видео и аудио</p></div>
+      <div><span class="eyebrow muted">Для кого</span><p>Семьи, которые не хотят терять историю по частям на разных носителях</p></div>
+      <div><span class="eyebrow muted">Кто делает</span><p>Архивист, юрист и IT-специалист с 20-летним стажем работы с данными — в одном лице</p></div>
+    </div>
+    <figure class="hero-img">
+      <img src="https://frdmsolutions-elmira.github.io/freedom-heritage/hero-women.jpg" alt="Мать и дочь пересматривают семейные фотографии">
+      <figcaption>Через двадцать лет именно эти фотографии расскажут внукам, какими вы были.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="contrast">
+  <div class="wrap">
+    <div class="contrast-grid">
+      <div class="contrast-col bad">
+        <h3>Как это обычно выглядит</h3>
+        <p>Фото — в трёх облаках и на старом телефоне. VHS-кассеты и флешки — без описи. Письма и грамоты — в коробке «на потом». Никто толком не знает, что где лежит, и со временем часть просто исчезает.</p>
+      </div>
+      <div class="contrast-col good">
+        <h3>Как может быть</h3>
+        <p>Единый цифровой архив с описью по архивным стандартам. Книга, которую можно подержать в руках и открыть QR-кодом на видео и голос. И уверенность, что ничего из этого больше не потеряется.</p>
+      </div>
+    </div>
+    <p class="contrast-closer">История семьи исчезает не за один день.<br>Она исчезает по одной фотографии.</p>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap">
+    <span class="eyebrow">почему именно сейчас</span>
+    <h2>Мы всегда думаем, что успеем</h2>
+    <p>Расспросить родителей. Записать голос. Оцифровать фотографии, пока плёнка не осыпалась. Кажется, что для этого будет более удобный момент. Но каждый год стираются детали: лица становятся расплывчатее на старых снимках, а голоса, которые можно было записать, — записать уже не у кого.</p>
+  </div>
+</section>
+
+<section class="guarantee" id="guarantee">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">почему можно доверить личный архив</span>
+      <h2>Тройная гарантия</h2>
+    </div>
+    <div class="grid-3">
+      <div>
+        <div class="num">№ 01 · точность</div>
+        <h3>Архивист</h3>
+        <p>Систематизация по архивным стандартам, а не «на глаз» — образование историка-архивиста и многолетняя работа с большими массивами документов.</p>
+      </div>
+      <div>
+        <div class="num">№ 02 · конфиденциальность</div>
+        <h3>Юрист</h3>
+        <p>Понимание того, как корректно работать с личными и семейными документами, не нарушая ничью приватность.</p>
+      </div>
+      <div>
+        <div class="num">№ 03 · сохранность</div>
+        <h3>IT-специалист</h3>
+        <p>20 лет работы в государственном управлении данными — архив строится так, чтобы открыться и через двадцать лет, а не только сегодня.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">услуги</span>
+      <h2>Три слоя одной работы</h2>
+    </div>
+    <div class="service-row">
+      <div class="num">01</div>
+      <div><h3>Оцифровка</h3><p>Старые фото, видеокассеты, документы, письма — переводятся в цифровой вид без потери качества и контекста.</p></div>
+    </div>
+    <div class="service-row">
+      <div class="num">02</div>
+      <div><h3>Систематизация</h3><p>Хаос превращается в структуру по архивным стандартам: по годам, по людям, по событиям.</p></div>
+    </div>
+    <div class="service-row">
+      <div class="num">03</div>
+      <div><h3>Книга + цифровой архив</h3><p>Книга с QR-кодами на видео и аудио воспоминания, и живой архив по ссылке — с постоянным доступом.</p></div>
+    </div>
+  </div>
+  <div class="quote-block">
+    <img src="https://frdmsolutions-elmira.github.io/freedom-heritage/book-qr.jpg" alt="Семейная книга с QR-доступом к видео и аудио воспоминаниям">
+    <p>Иногда достаточно одного письма,<br>чтобы заново открыть историю семьи.</p>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">как это происходит</span>
+      <h2>Путь от коробки до наследия</h2>
+    </div>
+    <div class="process-grid">
+      <div><div class="num">01</div><h4>Разговор и сбор</h4><p>Что есть, где лежит, что особенно важно сохранить и показать.</p></div>
+      <div><div class="num">02</div><h4>Оцифровка</h4><p>Фото, видео и документы переводятся в единый цифровой вид.</p></div>
+      <div><div class="num">03</div><h4>Систематизация</h4><p>Материал выстраивается в хронологию и смысловые главы.</p></div>
+      <div><div class="num">04</div><h4>Книга и архив</h4><p>Готовая книга с QR-доступом и архив по ссылке.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="cases" id="cases">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">примеры работы</span>
+      <h2>Завершённые наследия</h2>
+    </div>
+
+    <!-- CASE 1: Family archive -->
+    <div class="case-card">
+      <div class="case-media">
+        <img src="https://frdmsolutions-elmira.github.io/freedom-heritage/process-portrait.jpg" alt="Семейный архив, кейс №026">
+        <div class="badge"><span>от коробки к книге</span></div>
+      </div>
+      <div class="case-body">
+        <span class="eyebrow muted">кейс № 026 · семейный архив</span>
+        <h3>Одно завершённое наследие</h3>
+        <p>Семейные фото и видео, собранные за годы, — в одной системе. Материал, который раньше существовал кусками на разных носителях, стал книгой с живыми ссылками на видео — и архивом, который можно открыть в любой момент.</p>
+        <div class="case-facts">
+          <div><strong>Оцифровка</strong>фото, видео, документы</div>
+          <div><strong>Систематизация</strong>по годам и событиям</div>
+          <div><strong>Итог</strong>книга + архив по ссылке</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 2: Dilnaz portfolio -->
+    <div class="case-card reverse">
+      <div class="case-media">
+        <img src="case-dilnaz/gulnaz-cover.jpg" alt="Портфолио Gulnaz Alembekova, будущий журналист">
+        <div class="badge"><span>госграт получен</span></div>
+      </div>
+      <div class="case-body">
+        <span class="eyebrow muted">кейс № 7 · портфолио к поступлению</span>
+        <h3>Десять лет школьной жизни — в одной истории, которая убедила приёмную комиссию</h3>
+        <p>Гульназ поступала на факультет журналистики ЕНУ им. Гумилева — путь на грант лежит через творческий экзамен, где решает не только талант, но и то, как ты умеешь себя представить. Мы собрали все дипломы, грамоты и достижения за десять лет учёбы, перевели материалы на казахский язык и выстроили их в цельную историю: не список наград, а портрет человека, который уже готов быть журналистом.</p>
+        <p>Результат — портфолио в твёрдой обложке с инфографикой и визуальным оформлением уровня печатного издания. Гульназ набрала самый высокий балл на творческом экзамене и поступила на государственный грант.</p>
+        <div class="case-facts">
+          <div><strong>10 лет</strong>дипломов и грамот собрано и систематизировано</div>
+          <div><strong>2 языка</strong>перевод материалов на казахский</div>
+          <div><strong>Топ-балл</strong>на творческом экзамене</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="founder">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">кто делает</span>
+      <h2>Архивист, юрист, IT — и автор, который пишет историю</h2>
+    </div>
+    <div class="founder-grid">
+      <img src="https://frdmsolutions-elmira.github.io/freedom-heritage/process-portrait.jpg" alt="Эльмира — архивист, юрист, IT-специалист и автор, основатель Freedom Heritage">
+      <div>
+        <div class="credentials">
+          <div><strong>1997</strong><span>диплом<br>архивиста</span></div>
+          <div><strong>2007</strong><span>диплом<br>юриспруденции</span></div>
+          <div><strong>2010</strong><span>диплом<br>информ. систем</span></div>
+          <div><strong>20 лет</strong><span>работы<br>с данными</span></div>
+        </div>
+        <p>За системным подходом к документам стоит образование архивиста и многолетняя работа с большими массивами информации в государственном управлении. Юридическое образование добавляет понимание конфиденциальности, а опыт в IT — гарантию, что архив проживёт дольше одного устройства.</p>
+        <p>Но собрать и сохранить — только половина дела. Я сама пишу текст каждой истории: как автор и литератор превращаю документы, фотографии и голоса в связное повествование, которое хочется читать, а не просто архив, который хочется открыть.</p>
+        <p>Freedom Heritage — мы создаём истории, к которым будут возвращаться через поколения.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="invest">
+  <div class="wrap">
+    <div class="invest-grid">
+      <div>
+        <span class="eyebrow">формат работы</span>
+        <h2>Это не типовая услуга.<br>Это персональный проект.</h2>
+        <p>Каждый архив собирается заново — под конкретную семью, конкретные материалы и конкретную историю. Я не веду параллельно много проектов: погружаюсь в один архив полностью, от первого разговора до готовой книги в руках.</p>
+        <ul class="invest-list">
+          <li><span class="mark">—</span>Личное ведение проекта от начала до конца, без передачи ассистентам</li>
+          <li><span class="mark">—</span>Работа с документами и личными материалами семьи с юридическим пониманием приватности</li>
+          <li><span class="mark">—</span>Архивная систематизация — не просто сортировка файлов по папкам</li>
+          <li><span class="mark">—</span>Печатная книга премиального качества как физический артефакт наследия</li>
+        </ul>
+      </div>
+      <div class="invest-panel">
+        <span class="eyebrow">инвестиция</span>
+        <h3>Стоимость определяется объёмом и сложностью архива</h3>
+        <p>Проект начинается с разговора: сколько материала, в каком он состоянии, что важно сохранить. Точная стоимость и сроки — по итогам этого разговора, обычно в течение 24 часов.</p>
+        <p>Беру в работу ограниченное число проектов одновременно — это осознанный выбор в пользу качества, а не масштаба.</p>
+        <a href="#apply" class="btn filled">Оставить заявку</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="apply" id="apply">
+  <div class="wrap">
+    <span class="eyebrow">начать</span>
+    <h2>Расскажите, что у вас есть — посмотрим, что из этого можно сделать наследием</h2>
+    <p class="sub">Не нужно ничего сортировать заранее. Достаточно того, что уже лежит в коробках и облаках.</p>
+    <div class="apply-steps">
+      <div><span class="num">01</span><p>Пишете — коротко, что за материалы и сколько их</p></div>
+      <div><span class="num">02</span><p>Созваниваемся на 15–20 минут, чтобы понять объём</p></div>
+      <div><span class="num">03</span><p>Присылаю персональное предложение и сроки</p></div>
+    </div>
+    <div class="apply-ctas">
+      <a href="https://instagram.com/freedom.heritage" class="btn filled" target="_blank" rel="noopener">Написать в Instagram</a>
+      <a href="https://wa.me/77020798386?text=Здравствуйте,%20Эльмира!%20Хочу%20узнать%20подробнее%20о%20проекте%20Freedom%20Heritage" class="btn" target="_blank" rel="noopener">Написать в WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <p>Freedom Heritage — продукт компании Freedom Solutions · <a href="https://freedoms.kz">freedoms.kz</a> · Қостанай, Казахстан</p>
+  </div>
+</footer>
+
+</body>
+</html>
